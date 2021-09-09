@@ -43,7 +43,6 @@ RUN Rscript -e "install.packages(c('devtools', \
                                    'rmarkdown', \
                                    'tidyverse'), repos='https://ftp.gwdg.de/pub/misc/cran/')"
 RUN Rscript -e "remotes::install_github(repo = 'satijalab/seurat', ref = 'develop')"
-RUN Rscript -e "BiocManager::install(version = '3.13')"
 RUN Rscript -e "BiocManager::install(c('scran', \
                                        'scater', \
                                        'slingshot', \
