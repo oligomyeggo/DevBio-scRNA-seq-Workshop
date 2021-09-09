@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  lab:
+    build: .
+    volumes:
+     - ./workspace/:/workspace
+    ports:
+      - "8888:8888"
+    command: bash -c "
+      jupyter-lab --no-browser --ip=0.0.0.0 --allow-root"

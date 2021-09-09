@@ -1,0 +1,42 @@
+# Base packages
+jupyter
+jupyterlab
+
+# ## Useful packages
+scanpy == 1.8.1
+rpy2 == 3.4.2
+anndata2ri == 1.0.6
+python-igraph == 0.9.6
+leidenalg == 0.8.7
+cellrank == 1.4.0
+# cython
+# pytest
+# requests
+# scrapy
+
+# ## Data & Visualization
+# altair
+# bokeh
+# matplotlib
+numpy == 1.20
+llvmlite == 0.37.0
+# pandas
+# seaborn
+# traces
+# wordcloud
+
+# ## Excel Extractors
+# openpyxl
+# xlrd
+
+# ## Machine Learning
+# ## gensim
+# ## keras
+# nltk
+# scipy
+# scikit-learn
+# statsmodels
+# ## tensorflow
+
+# ## Specific Projects / Custom Packages
+# pycrypto
