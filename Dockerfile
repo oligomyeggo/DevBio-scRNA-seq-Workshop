@@ -39,10 +39,10 @@ RUN Rscript -e "install.packages(c('devtools', \
                                    'RColorBrewer', \
                                    'BiocManager', \
                                    'IRkernel', \
-                                   'remotes', \
+                                   'Seurat', \
                                    'rmarkdown', \
                                    'tidyverse'), repos='https://ftp.gwdg.de/pub/misc/cran/')"
-RUN Rscript -e "remotes::install_github(repo = 'satijalab/seurat', ref = 'develop')"
+#RUN Rscript -e "remotes::install_github(repo = 'satijalab/seurat', ref = 'develop')"
 RUN Rscript -e "BiocManager::install(c('scran', \
                                        'scater', \
                                        'slingshot', \
