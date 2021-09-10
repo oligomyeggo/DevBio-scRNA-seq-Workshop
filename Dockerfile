@@ -1,7 +1,9 @@
+# Get base image
 FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Install system libraries required for python and R installations
 RUN apt-get update && \
     apt-get install -y \
     --no-install-recommends \
@@ -30,10 +32,12 @@ RUN apt-get update && \
     vim \
     git
 
+# Install R version 4.1
 RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/"
 RUN apt update && apt install -y r-base
 
+# Install important R packages needed for scRNA-seq analysis and visualization
 RUN Rscript -e "update.packages(ask=FALSE, repos='https://ftp.gwdg.de/pub/misc/cran/')"
 RUN Rscript -e "install.packages(c('devtools', \
                                    'RColorBrewer', \
@@ -42,19 +46,17 @@ RUN Rscript -e "install.packages(c('devtools', \
                                    'Seurat', \
                                    'rmarkdown', \
                                    'tidyverse'), repos='https://ftp.gwdg.de/pub/misc/cran/')"
-#RUN Rscript -e "remotes::install_github(repo = 'satijalab/seurat', ref = 'develop')"
 RUN Rscript -e "BiocManager::install(c('scran', \
                                        'scater', \
                                        'slingshot', \
                                        'clusterExperiment', \
                                        'tradeSeq'), version = '3.13')"
 
+# Install important python packages needed for scRNA-seq analysis and visualization
 WORKDIR /app
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 RUN Rscript -e "IRkernel::installspec(user = FALSE)"
-
-COPY . /app
 
 RUN apt-get clean -y && apt-get autoremove -y

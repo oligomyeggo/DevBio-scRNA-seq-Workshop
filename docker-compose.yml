@@ -4,7 +4,7 @@ services:
   lab:
     build: .
     volumes:
-     - ./workspace/:/workspace
+     - ././:/app
     ports:
       - "8888:8888"
     command: bash -c "
