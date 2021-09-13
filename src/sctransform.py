@@ -9,7 +9,7 @@ import scanpy as sc
 from typing import Optional, Sequence
 from anndata import AnnData
 
-from .rtools import (
+from rtools import (
     anndata2ri_check,
     py2r,
     r2py,
@@ -26,7 +26,7 @@ def sctransform(
     regress_out: Sequence = ('log_umi',),
     method='poisson',
     batch_key: Optional[str] = None,
-    n_top_genes: int = 3000,
+    n_top_genes: int = 4000,
     regress_out_nonreg: Optional[Sequence] = None,
     min_cells: int = 5,
     store_residuals: bool = False,
@@ -107,7 +107,7 @@ def sctransform(
     if not inplace:
         adata = adata.copy()
 
-    sc.filter_genes(adata, min_cells=min_cells)
+    sc.pp.filter_genes(adata, min_cells=min_cells)
 
     mat = adata.X.T
     if sp.issparse(mat):

@@ -73,10 +73,9 @@ def scran(
     # Visualize the estimated size factors
     # Size factors should be non-negative and related to the number of counts and genes per cell as expected
     adata.obs['size_factors'] = size_factors
-    sc.pl.scatter(adata, 'size_factors', 'n_counts', save = '_sizefactors_ncounts.png')
-    sc.pl.scatter(adata, 'size_factors', 'n_genes', save = '_sizefactors_ngenes.png')
+    sc.pl.scatter(adata, 'size_factors', 'n_counts')
+    sc.pl.scatter(adata, 'size_factors', 'n_genes')
     sb.distplot(size_factors, bins=50, kde=False)
-    plt.save('sizefactors_distplot.png')
 
     # Keep a copy of the raw count data in a counts layer
     # Always save a copy of the raw count data, as some downstream analysis methods require it!
