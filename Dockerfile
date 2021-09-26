@@ -45,12 +45,17 @@ RUN Rscript -e "install.packages(c('devtools', \
                                    'IRkernel', \
                                    'Seurat', \
                                    'rmarkdown', \
-                                   'tidyverse'), repos='https://ftp.gwdg.de/pub/misc/cran/')"
+                                   'tidyverse', \
+                                   'ggsci', \
+                                   'sctransform', \
+                                   'patchwork', \
+                                   'harmony'), repos='https://ftp.gwdg.de/pub/misc/cran/')"
 RUN Rscript -e "BiocManager::install(c('scran', \
                                        'scater', \
                                        'slingshot', \
                                        'clusterExperiment', \
-                                       'tradeSeq'), version = '3.13')"
+                                       'tradeSeq', \
+                                       'readxl'), version = '3.13')"
 
 # Install important python packages needed for scRNA-seq analysis and visualization
 WORKDIR /app
