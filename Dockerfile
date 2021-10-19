@@ -62,6 +62,9 @@ WORKDIR /app
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
+# repr patch to fix the html filtering bug introduced in R 4.1.1
+RUN Rscript -e "library(devtools); install_github('renkun-ken/repr@fix-html-filter')"
+
 RUN Rscript -e "IRkernel::installspec(user = FALSE)"
 
 RUN apt-get clean -y && apt-get autoremove -y
