@@ -55,7 +55,7 @@ RUN Rscript -e "BiocManager::install(c('scran', \
                                        'slingshot', \
                                        'clusterExperiment', \
                                        'tradeSeq', \
-                                       'readxl'), version = '3.13')"
+                                       'readxl'), version = '3.14')"
 
 # Install important python packages needed for scRNA-seq analysis and visualization
 WORKDIR /app
